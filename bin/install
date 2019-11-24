@@ -1,0 +1,4 @@
+#!/bin/bash -e
+
+sudo snap install exercism
+echo run exercism configure --token=<token>
