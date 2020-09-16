@@ -11,11 +11,11 @@ hey remark =
 
   in
 
-  if isEmpty text then
+  if isSilence text then
     "Fine. Be that way!"
-  else if isForcefulQuestion text then
+  else if isQuestion text && isShout text then
     "Calm down, I know what I'm doing!"
-  else if isForceful text then
+  else if isShout text then
     "Whoa, chill out!"
   else if isQuestion text then
     "Sure."
@@ -23,24 +23,17 @@ hey remark =
     "Whatever."
 
 isQuestion : String -> Bool
-isQuestion remark =
-  String.right 1 remark == "?"
+isQuestion = String.endsWith "?"
 
-isForceful : String -> Bool
-isForceful remark =
-  containsLetters remark && String.toUpper remark == remark
-
-isForcefulQuestion : String -> Bool
-isForcefulQuestion remark =
-  isForceful remark && isQuestion remark
+isShout : String -> Bool
+isShout text =
+  containsLetters text && String.toUpper text == text
 
 containsLetters : String -> Bool
-containsLetters remark =
-  String.any Char.isAlpha remark
+containsLetters = String.any Char.isAlpha
 
-isEmpty : String -> Bool
-isEmpty remark =
-  String.isEmpty remark || String.all isWhitespace remark
+isSilence : String -> Bool
+isSilence = String.all isWhitespace
 
 isWhitespace : Char -> Bool
 isWhitespace char =
