@@ -6,17 +6,17 @@ distance left right =
   if String.length left /= String.length right then
     Result.Err "left and right strands must be of equal length"
   else
-    Result.Ok <| calculateDistance left right 0
+    Result.Ok <| calculateDistance left right 0 0
 
-calculateDistance : String -> String -> Int -> Int
-calculateDistance left right diff =
-  if String.isEmpty left then
+calculateDistance : String -> String -> Int -> Int -> Int
+calculateDistance left right index diff =
+  if index >= String.length left then
     diff
-  else if matchingPrefix left right then
-    calculateDistance (String.dropLeft 1 left) (String.dropLeft 1 right) diff + 1
+  else if matchingSection left right index then
+    calculateDistance left right (index + 1) diff
   else
-    calculateDistance (String.dropLeft 1 left) (String.dropLeft 1 right) diff
+    calculateDistance left right (index + 1) (diff + 1)
 
-matchingPrefix : String -> String -> Bool
-matchingPrefix left right =
-  String.left 1 left /= String.left 1 right
+matchingSection : String -> String -> Int -> Bool
+matchingSection left right index =
+  String.slice index (index +1) left == String.slice index (index + 1) right
