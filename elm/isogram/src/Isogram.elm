@@ -8,7 +8,8 @@ isIsogram sentence =
     letters = String.toLower sentence |> String.toList |> List.filter Char.isAlpha
   in
 
-  (Set.fromList letters |> Set.size) == (List.length letters)
+  List.length letters == uniqueCount letters
 
-
-
+uniqueCount : List comparable -> Int
+uniqueCount list =
+  Set.size <| Set.fromList list
