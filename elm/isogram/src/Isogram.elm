@@ -5,7 +5,7 @@ import Set
 isIsogram : String -> Bool
 isIsogram sentence =
   let
-    letters = List.filter Char.isAlpha <| String.toList <| String.toLower sentence
+    letters = String.toLower sentence |> String.toList |> List.filter Char.isAlpha
   in
 
   (Set.fromList letters |> Set.size) == (List.length letters)
