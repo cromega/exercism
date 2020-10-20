@@ -1,7 +1,5 @@
 module Isogram exposing (isIsogram, uniq)
 
-import Set
-
 isIsogram : String -> Bool
 isIsogram sentence =
   let
