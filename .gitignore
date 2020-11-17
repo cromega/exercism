@@ -1,2 +1,5 @@
 generated-code
 .exercism
+elm-stuff
+elm/node_modules
+elm/package-lock.json
