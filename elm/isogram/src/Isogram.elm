@@ -13,10 +13,7 @@ uniq = List.foldl rejectDuplicates []
 
 rejectDuplicates : a -> List a -> List a
 rejectDuplicates val acc =
-  case acc of
-    [] -> acc ++ [val]
-    x :: _ ->
-      if List.member val acc then
-        acc
-      else
-        acc ++ [val]
+  if List.member val acc then
+    acc
+  else
+    acc ++ [val]
