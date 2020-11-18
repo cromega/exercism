@@ -3,3 +3,5 @@ generated-code
 elm-stuff
 elm/node_modules
 elm/package-lock.json
+elm/package.json
+elm/yarn.lock
